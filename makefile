@@ -12,15 +12,15 @@ EXE=satisfy.exe
 
 all : satisfy.exe
 
-satisfy.exe: satisfy.o cpu_timer.o 
+satisfy.exe: src/satisfy.o src/cpu_timer.o 
 	nvcc  $^ -o $@ -lglut -lGL  $(NVCC_FLAGS) -DUSE_FLOAT
 
-satisfy.o: satisfy.cpp
-	g++ -std=c++11 -o satisfy.o -c satisfy.cpp
+src/satisfy.o: src/satisfy.cpp
+	g++ -std=c++11 -o src/satisfy.o -c src/satisfy.cpp
 	
-cpu_timer.o: cpu_timer.cpp
-	g++ -std=c++11 -o cpu_timer.o -c cpu_timer.cpp
+src/cpu_timer.o: src/cpu_timer.cpp
+	g++ -std=c++11 -o src/cpu_timer.o -c src/cpu_timer.cpp
 
 
 clean:
-	rm -rf *.exe *.o
+	rm -rf *.exe src/*.o
